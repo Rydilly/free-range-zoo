@@ -53,7 +53,7 @@ class StrongestBaseline(Agent):
 
         for batch in range(self.parallel_envs):
             for element in range(self.t_mapping[batch].size(0)):
-                argmax_store[batch][element] = fires[batch][element]
+                argmax_store[batch][element] = fires[batch][self.t_mapping[batch][element]]
 
             if len(argmax_store[batch]) == 0:
                 self.actions[batch].fill_(-1)  # There are no fires in the environment, so agents have to noop
